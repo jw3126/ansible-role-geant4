@@ -1,0 +1,33 @@
+---
+# tasks file for geant4
+- name: clone
+  git:
+    repo: "{{ G4repo }}"
+    dest: "{{ G4srcpath }}"
+    version: "{{ G4version }}"
+- name: create build dir
+  file: {state: directory, path: "{{ G4buildpath }}"}
+- name: jinja2
+  template:
+    src: "{{role_path}}/initial-cache.cmake.jinja2"
+    dest: "{{role_path}}/initial-cache.cmake"
+- name: cmake
+  command:  cmake -C "{{role_path}}/initial-cache.cmake" "{{ G4srcpath}}"
+  args:
+    chdir: "{{G4buildpath}}"
+
+- name: make
+  command: "make -j{{ ansible_processor_vcpus}}" # not sure how to pass j8 without using command
+  args:
+    chdir: "{{G4buildpath}}"
+- name: make install
+  make:
+    chdir: "{{G4buildpath}}"
+    target: install
+    result: "{{ result_installation }}"
+    params:
+      jobs: "{{ ansible_processor_vcpus }}"
+- name: "log"
+  debug:
+    # msg: "{{ ansible_processor_vcpus }}"
+    msg: "{{ result_installation }}"

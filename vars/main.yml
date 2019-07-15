@@ -1,0 +1,9 @@
+---
+# vars file for geant4
+G4version: v10.5.0
+G4repo: https://github.com/Geant4/geant4.git
+G4path:
+G4srcpath:     "{{ G4path }}/src"
+G4buildpath:   "{{ G4path }}/build"
+G4datapath:    "{{ G4path }}/data"
+G4installpath: "{{ G4path }}/install"

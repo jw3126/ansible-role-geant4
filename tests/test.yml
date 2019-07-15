@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+  remote_user: root
+  roles:
+      - role: geant4
+        G4path: "/tmp/G4"
