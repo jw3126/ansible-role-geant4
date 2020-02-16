@@ -12,5 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with: 
+        path: ~/.ansible/roles/geant4
     - name: Run install.yml
       run: ansible-playbook tests/test.yml
