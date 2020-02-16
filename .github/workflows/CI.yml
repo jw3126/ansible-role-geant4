@@ -15,4 +15,4 @@ jobs:
       with: 
         path: ~/.ansible/roles/geant4
     - name: Run install.yml
-      run: ansible-playbook tests/test.yml
+      run: ansible-playbook  ~/.ansible/roles/geant4/tests/test.yml
