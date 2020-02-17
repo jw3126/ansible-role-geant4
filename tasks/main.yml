@@ -11,6 +11,12 @@
   template:
     src: "{{role_path}}/initial-cache.cmake.jinja2"
     dest: "{{role_path}}/initial-cache.cmake"
+- name: Install rerequisites
+  apt:
+    pkg:
+    - cmake
+    - make
+    - libxerces-c-dev
 - name: cmake
   command:  cmake -C "{{role_path}}/initial-cache.cmake" "{{ G4srcpath}}"
   args:
