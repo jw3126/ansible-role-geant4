@@ -38,6 +38,7 @@
     target: install
     params:
       jobs: "{{ ansible_processor_vcpus }}"
+  register: result_installation
 - name: "log"
   debug:
     # msg: "{{ ansible_processor_vcpus }}"
