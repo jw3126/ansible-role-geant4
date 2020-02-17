@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: install
+      run: ansible-galaxy install git+https://github.com/jw3126/ansible-role-geant4.git
     - uses: actions/checkout@v2
-      with: 
-        path: ~/.ansible/roles/geant4
-    - name: Run install.yml
+    - name: playbook
       run: ansible-playbook  ~/.ansible/roles/geant4/tests/test.yml
