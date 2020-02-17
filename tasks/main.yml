@@ -6,6 +6,8 @@
     - cmake
     - make
     - libxerces-c-dev
+    - build-essential
+    - qt5-default
   become: true
   become_method: sudo
   
