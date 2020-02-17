@@ -1,5 +1,14 @@
 ---
 # tasks file for geant4
+- name: Install prerequisites
+  apt:
+    pkg:
+    - cmake
+    - make
+    - libxerces-c-dev
+  become: true
+  become_method: sudo
+  
 - name: clone
   git:
     repo: "{{ G4repo }}"
@@ -11,12 +20,7 @@
   template:
     src: "{{role_path}}/initial-cache.cmake.jinja2"
     dest: "{{role_path}}/initial-cache.cmake"
-- name: Install rerequisites
-  apt:
-    pkg:
-    - cmake
-    - make
-    - libxerces-c-dev
+
 - name: cmake
   command:  cmake -C "{{role_path}}/initial-cache.cmake" "{{ G4srcpath}}"
   args:
