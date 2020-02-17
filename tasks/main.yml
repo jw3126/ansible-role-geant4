@@ -36,10 +36,8 @@
   make:
     chdir: "{{G4buildpath}}"
     target: install
-    register: result_installation
     params:
       jobs: "{{ ansible_processor_vcpus }}"
 - name: "log"
   debug:
     # msg: "{{ ansible_processor_vcpus }}"
-    msg: "{{ result_installation }}"
