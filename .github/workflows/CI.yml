@@ -15,4 +15,4 @@ jobs:
       run: ansible-galaxy install git+https://github.com/jw3126/ansible-role-geant4.git
     - uses: actions/checkout@v2
     - name: playbook
-      run: ansible-playbook  ~/.ansible/roles/geant4/tests/test.yml
+      run: ansible-playbook tests/test.yml
