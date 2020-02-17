@@ -10,7 +10,7 @@
     - qt5-default
   become: true
   become_method: sudo
-  
+
 - name: clone
   git:
     repo: "{{ G4repo }}"
@@ -36,7 +36,7 @@
   make:
     chdir: "{{G4buildpath}}"
     target: install
-    result: "{{ result_installation }}"
+    register: result_installation
     params:
       jobs: "{{ ansible_processor_vcpus }}"
 - name: "log"
